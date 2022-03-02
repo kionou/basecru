@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Charmonman:wght@700&family=Kaushan+Script&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Abhaya Libre', serif;
+    font-size: 1.2rem;
+   
+}
+body{
+    background-color: beige;
+}
+
+.titre{
+    color: #fff;
+    font-weight: 700;
+    font-style: italic;
+}
+.headerTexte{
+    font-style: oblique;
+    font-weight: 400;
+    font-size: large;
+
+}
+.nav-link{
+    color: #fff !important;
+     font-weight: 400;
+      font-size: 24px;
+}
+
+.navbar-brand{
+    font-style: italic;
+    font-family: 'Charmonman', cursive;
+
+}
+
+.banner-dakar{
+    background: url('/images/yy.jpg')center no-repeat;
+    background-size: cover;
+    height: 70vh;
+    width: 100%;
+
+}
+
+.head{
+    background-color: rgb(16, 209, 235);
+    border-radius: 5px;
+    margin-top: -40px;
+    /* -webkit-box-shadow: -1px 14px 28px -8px rgb(16, 209, 235);
+    -moz-box-shadow: -1px 14px 28px -8px rgb(16, 209, 235);
+    box-shadow: -1px 14px 28px -8px rgb(16, 209, 235) -1px 14px 28px -8px rgb(16, 209, 235);  */
+}
+.contact{
+    background-color: rgb(250, 255, 255);
+}
+
+.effect-1{
+    border: 0;
+    outline: none;
+    width: 100%;
+    padding: 7px 0;
+    border-bottom: 1px solid #ccc;
+}  
+
+.boutton{
+    background-color: rgb(16, 209, 235);
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    width: 145px;
+}
+.boutton:hover{
+    -webkit-box-shadow: -1px 14px 28px -8px rgb(16, 209, 235);
+    -moz-box-shadow: -1px 14px 28px -8px rgb(16, 209, 235);
+    box-shadow: -1px 14px 28px -8px rgb(16, 209, 235 )-1px 14px 28px -8px rgb(16, 209, 235);
+}  
+
+
+.ville{
+    color: rgb(179, 32, 32);
+}
+
+.texte{
+    font-family: monospace;
+    font-style: italic;
+    color: rgb(237, 20, 9);
+}
+.card{
+    background-color: #fff !important;
+    border-color:rgb(16, 209, 235) ;
+}

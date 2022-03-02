@@ -1,0 +1,108 @@
+body{
+    background-color: #000000;
+    padding: 0 2rem;
+}
+
+.menu1{
+    background-color: #000000;
+}
+
+a.nav-link{
+    color: #fff !important;
+    
+}
+.navbar-toggler{
+    background-color: #fff !important;
+}
+.lien{
+    float: right;
+   
+}
+.navbar-collapse{
+    flex-grow: 0;
+}
+.principale{
+    background-color: #f9a122;
+    padding-bottom: 7rem;
+    padding-top: 8rem;
+}
+#image{
+    border-radius: 25px;
+}
+.colonne1{
+    color: #fff;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    
+}
+.display-2{
+    font-size: 55px;
+    font-weight: bold;
+}
+.texte2{
+    color: #fff;
+    font-family:Georgia, Times, 'Times New Roman', serif;
+    
+}
+
+.image2{
+    display:flex;
+}
+
+.imag{
+    width: 600px;
+    height: 300px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.third{
+    background-color: #f9a122;
+}
+
+.second{
+    padding-bottom: 20px;
+    padding-top: 30px;
+}
+.third{
+    padding-bottom: 20px;
+    
+}
+
+.fourth{
+    padding-bottom: 40px; 
+    color: #fff; 
+}
+.eco{
+  font-size: 60px;
+  font-weight: 10px; 
+  
+}.grs{
+    font-family: sans-serif ;   
+    margin-bottom: 30px;
+}
+.pte{
+    font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    line-height: 30px; 
+    font-size: 20px;
+    font-weight: 50px;
+    margin-top: 10px;
+}
+.nos{
+   color: #fff;
+   font-size: 3rem;
+   font-family:  serif
+}
+.enga{
+    color: #fff;
+    font-size: 3rem;
+}
+.card:hover{
+    background: linear-gradient(to right, orange, white);
+}
+
+ .foote{
+    display: flex;
+      flex-direction: column;  
+} 

@@ -1,0 +1,1 @@
+exports.inscriptionRouter_post_all
