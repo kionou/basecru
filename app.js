@@ -4,6 +4,7 @@ const db = require('./database/database');
 let accueil = require("./router/inscriptionRouter");
 
 
+
 db.connect((err)=>{
     if(!err){
         console.log('connection etablie');

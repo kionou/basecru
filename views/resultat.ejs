@@ -35,8 +35,8 @@
                           <td><%= client.numero %></td>
                           <td><%= client.ville %></td>
                           <td>
-                             <a href="/resultat?id=<%= client.id %>" onclick="return confirm('voulez-vous supprimer?')" class=" btn bg-danger text-white py-2 "><i class="fa-solid fa-trash"></i></a>
-                            <button  class="btn bg-success text-white py-2 "><i class="fa-solid fa-pen"></i></button> 
+                             <a href="/delete?id=<%= client.id %>" onclick="return confirm('voulez-vous supprimer?')" class=" btn bg-danger text-white py-2 "><i class="fa-solid fa-trash"></i></a>
+                             <a href="/edit?id=<%= client.id %>" class="btn bg-success text-white py-2 "><i class="fa-solid fa-pen"></i></a> 
                         </td>
                         </tr>
                    <% }) ; %>
