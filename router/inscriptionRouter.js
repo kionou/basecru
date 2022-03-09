@@ -1,18 +1,15 @@
 let express = require('express');
 let router= express.Router();
-
 const db = require('../database/database');
-const { body, validationResult } = require('express-validator');
 const crud = require('../controllers/inscriptionControllers');
+const { valider ,userVlidation} = require('../validator/validator');
 
-const validator = [
-    body('nom')
-    .isEmpty().withMessage('remplisser')
-    .isLength({min: 3}).withMessage('le nom doit avoir au min 3 caracteres')
-    
-] 
 
-router.get('/',crud.insertionGet)
+
+
+ 
+
+router.get('/',valider,userVlidation,crud.insertionGet)
 
 router.post('/',crud.insertionPost)
 
@@ -45,3 +42,6 @@ module.exports = router;
 //         res.render('../views/index',{
 //             alert:error.mapped(),
 //         })
+//     }else{
+
+// }
