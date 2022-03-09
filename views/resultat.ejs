@@ -27,7 +27,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                          <% resultat.forEach(function(client){ %>
+                          <% suc.forEach(function(client){ %>
                         <tr>
                           <td><%= client.nom %></td>
                           <td><%= client.prenom %></td>
@@ -35,7 +35,7 @@
                           <td><%= client.numero %></td>
                           <td><%= client.ville %></td>
                           <td>
-                             <a href="/delete?id=<%= client.id %>" onclick="return confirm('voulez-vous supprimer?')" class=" btn bg-danger text-white py-2 "><i class="fa-solid fa-trash"></i></a>
+                             <a href="/delete?id=<%= client.id %>" onclick="confirm('voulez-vous supprimer?')" class=" btn bg-danger text-white py-2 "><i class="fa-solid fa-trash"></i></a>
                              <a href="/edit?id=<%= client.id %>" class="btn bg-success text-white py-2 "><i class="fa-solid fa-pen"></i></a> 
                         </td>
                         </tr>
