@@ -15,32 +15,39 @@
             <div class="col-lg-6 mx-auto">              
                <div class="card mb-5">
                <div class="card-body">
-                <form action="" class="formulaire" enctype="multipart/form-data" method="post">
+                <form class="formulaire"  method="post">
                     <div class="form p-3">                   
                         <div class="form-row my-2 ">
                             <div class="col-lg-12 ">
                                 <input type="text" class="effect-1 "  name="prenom" value="" placeholder="Prenom">
                                 <span class="Focus-border"></span>
+                                <%   if (alert.nom)  { %>
+                                    <div class="validation"><%=alert.prenom.msg%></div>
+                                    <% } %>      
                             </div>
                             <div class="col-lg-12 pt-4">
-                                
-
                                     <input type="text" class="effect-1 " name="nom"  placeholder="Nom">
                                     <span class="Focus-border"></span>
-                                        <!--   if (alert.nom)  
-                                    <div class="validation">alert.nom.msg</div>
-
-                                        -->
+                                    <%   if (alert.nom)  { %>
+                                    <div class="validation"><%=alert.nom.msg%></div>
+                                    <% } %>      
+                                        
                             </div>
                         </div>
                         <div class="form-row pb-4">
                             <div class="col-lg-12">
                                 <input type="email" class="effect-1 email"  name="email" placeholder="Adresse email">
                                 <span class="Focus-border"></span>
+                                <%   if (alert.nom)  { %>
+                                    <div class="validation"><%=alert.email.msg%></div>
+                                    <% } %>      
                             </div>
                             <div class="col-lg-12 pt-4">
-                                <input type="tel" class="effect-1 "  name="numero"placeholder="Numero téléphone">
+                                <input type="tel" class="effect-1 "  name="numero" placeholder="Numero téléphone">
                                 <span class="Focus-border"></span>
+                                <%   if (alert.nom)  { %>
+                                    <div class="validation"><%=alert.numero.msg%></div>
+                                    <% } %>      
                             </div>
                         </div>
                         <div class="form-row pt-1">

@@ -10,6 +10,6 @@ let db = mysql.createConnection({
     // user:'root',
     // password:'',
 
-    database:'tourisme',
+    database:'yoopo',
 });
 module.exports = db;

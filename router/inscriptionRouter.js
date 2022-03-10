@@ -2,16 +2,16 @@ let express = require('express');
 let router= express.Router();
 const db = require('../database/database');
 const crud = require('../controllers/inscriptionControllers');
-const { valider ,userVlidation} = require('../validator/validator');
+const { valider,userVlidation } = require('../mill/validator');
 
 
 
 
- 
-
-router.get('/',valider,userVlidation,crud.insertionGet)
-
-router.post('/',crud.insertionPost)
+router.route('/')
+    .get((req,res)=>{
+        res.render('index',{alert:{}})
+    })
+    .post( valider,userVlidation,crud.insertionPost)
 
 router.get('/resultat',crud.selection)
 
