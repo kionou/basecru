@@ -31,9 +31,9 @@ exports.valider= [
     body('numero')
         .notEmpty()
         .withMessage('numero obligatoire'),
-	body('numero')
-        .isMobilePhone('id-ID')
-        .withMessage('Numero non valide')
+	// body('numero')
+    //     .isMobilePhone('id-ID')
+    //     .withMessage('Numero non valide')
   
 
     

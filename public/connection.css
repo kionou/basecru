@@ -1,0 +1,63 @@
+body{
+
+    background: url(images/simulacio-n-de-vacuna-frente-al-covid-19-foto-freepik.jpeg) no-repeat center;
+    width: 100%;
+    height: 100vh;
+    background-size: cover; 
+    font-family: Avanta Garde;   
+}
+
+a{
+    text-decoration: none;
+    font-size: 20px;
+    color:rgb(53, 53, 53)
+}
+a:hover{
+    color: #fff;
+}
+
+footer{
+    background-color: #333;
+    padding: 20px 0 10px ;
+    color: white;
+}
+
+form{
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 90px auto;
+    max-width: 400px;
+     background: #fff !important;
+    border-radius: 10px !important;
+     font-family: monospace !important;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 13px;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+.nav-link:hover{
+    border: 2px solid black;
+    background-color: #000;
+    color: #fff !important;
+    border-radius: 10px;
+}
+
+.boutton{
+
+    font-size: 14px;
+    transform: translateY(10px);  
+    border-radius: 10px !important;
+}
+
+h5{
+    font-weight: bolder;
+    margin-top: 30px;
+}

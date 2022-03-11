@@ -13,9 +13,11 @@ router.route('/')
     })
     .post( valider,userVlidation,crud.insertionPost)
 
+router.get('/connection',crud.connexionGet)
+router.post('/connection',crud.connexionPost)
+
+
 router.get('/resultat',crud.selection)
-
-
 
 router.get('/delete',crud.supprimer)
 

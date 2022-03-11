@@ -1,6 +1,7 @@
 let express = require('express');
+const session = require('express-session');
 let app = express();
-const db = require('./database/database');
+let db = require('./database/database');
 let accueil = require("./router/inscriptionRouter");
 
 
@@ -15,6 +16,12 @@ db.connect((err)=>{
         app.use(express.static('public'));
         app.use(express.json())
         app.use(express.urlencoded({ extended: false }))
+        app.use(session({ 
+            secret: 'keyboard cat',
+            resave: false,
+            saveUninitialized: true,
+            cookie: { maxAge: 60000 }
+        }))
         app.use(accueil);
 
     }else{
@@ -22,7 +29,6 @@ db.connect((err)=>{
 
     }
 })
-
 
 
 
