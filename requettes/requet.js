@@ -4,7 +4,7 @@ const db = require("../database/database");
 const data = class{
     static insert = (into) =>{
         let {nom,prenom,email,numero,ville} = into 
-        let sql = "INSERT INTO `clients`( `nom`, `prenom`, `email`, `numero`, `ville`) VALUES (?,?,?,?,?);"
+        let sq = "INSERT INTO `clients`( `nom`, `prenom`, `email`, `numero`, `ville`) VALUES (?,?,?,?,?);"
        
         db.query(sql,[nom, prenom, email,numero,ville],(erreur,result)=>{
             if (erreur) {

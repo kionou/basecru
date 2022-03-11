@@ -11,7 +11,7 @@
 </head>
 <section>
     <div class="container">
-        <div class="row">
+        <div class="row py-5">
             <div class="col-lg-6 mx-auto">              
                <div class="card mb-5">
                <div class="card-body">
@@ -21,7 +21,7 @@
                             <div class="col-lg-12 ">
                                 <input type="text" class="effect-1 "  name="prenom" value="" placeholder="Prenom">
                                 <span class="Focus-border"></span>
-                                <%   if (alert.nom)  { %>
+                                <%   if (alert.prenom)  { %>
                                     <div class="validation"><%=alert.prenom.msg%></div>
                                     <% } %>      
                             </div>
@@ -38,14 +38,14 @@
                             <div class="col-lg-12">
                                 <input type="email" class="effect-1 email"  name="email" placeholder="Adresse email">
                                 <span class="Focus-border"></span>
-                                <%   if (alert.nom)  { %>
+                                <%   if (alert.email)  { %>
                                     <div class="validation"><%=alert.email.msg%></div>
                                     <% } %>      
                             </div>
                             <div class="col-lg-12 pt-4">
                                 <input type="tel" class="effect-1 "  name="numero" placeholder="Numero téléphone">
                                 <span class="Focus-border"></span>
-                                <%   if (alert.nom)  { %>
+                                <%   if (alert.numero)  { %>
                                     <div class="validation"><%=alert.numero.msg%></div>
                                     <% } %>      
                             </div>

@@ -22,12 +22,18 @@ exports.valider= [
     body('email')
         .notEmpty()
         .withMessage('e-mail est requis'),
-   body('email')
+     body('email')
         .isEmail()
         .withMessage('email non valide'),
     body('numero')
+        .isLength({ min: 10 })
+        .withMessage('Le numero de téléphone doit etre de 10 chiffres'),
+    body('numero')
         .notEmpty()
-        .withMessage('numero obligatoire')
+        .withMessage('numero obligatoire'),
+	body('numero')
+        .isMobilePhone('id-ID')
+        .withMessage('Numero non valide')
   
 
     
