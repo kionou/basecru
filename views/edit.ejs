@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styleInscription.css">
+    <title>Document</title>
+</head>
+<section>
+    <div class="container">
+        <div class="row py-5">
+            <h1 class="text-center">MODIFICATION DU FORMULAIRE</h1>
+            <div class="col-lg-6 mx-auto">
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <form class="formulaire" method="post">
+                            <div class="form p-3">
+                                <div class="form-row my-2 ">
+                                    <div class="col-lg-12 ">
+                                        <input type="text" class="effect-1 " name="prenom" value="<%= data.prenom %>" placeholder="Prenom">
+                                        <span class="Focus-border"></span>
+                                    </div>
+                                    <div class="col-lg-12 pt-4">
+                                        <input type="text" class="effect-1 " name="nom" value="<%= data.nom %>" placeholder="Nom">
+                                        <span class="Focus-border"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row pb-4">
+                                    <div class="col-lg-12">
+                                        <input type="email" class="effect-1 email" value="<%= data.email %>" name="email"
+                                            placeholder="Adresse email">
+                                        <span class="Focus-border"></span>
+                                      
+                                    </div>
+                                    <div class="col-lg-12 pt-4">
+                                        <input type="tel" class="effect-1 " value="<%= data.numero %>" name="numero"
+                                            placeholder="Numero téléphone">
+                                        <span class="Focus-border"></span>
+                                       
+                                      
+                                    </div>
+                                </div>
+                                <div class="form-row pt-1">
+                                    <div class="col-lg-12">
+                                        <select class="form-select effect-1 ville" aria-label="Default select example"
+                                            name="ville">
+                                            <option class="ville" value="">Choisir une ville</option>
+                                            <option value="Dakar">Dakar</option>
+                                            <option value="Somone">Somone</option>
+                                            <option value="Salyme">Saly</option>
+                                            <option value="Sine-Saloum">Sine-Saloum</option>
+                                            <option value="Popenguine-Ndayane">Popenguine-Ndayane</option>
+                                            <option value="Joal-Fadiouth">Joal-Fadiouth</option>
+                                        </select>
+                                        <span class="Focus-border"></span>
+                                    </div>
+                                    <div class="col-lg-12 ">
+                                        <input type="file" class="effect-1 " name="uploaded_file">
+                                        <span class="Focus-border"></span>
+                                    </div>
+                                </div>
+                                <div class=" col-lg-4 pt-3 text-center">
+                                    <button type="submit" class="btn boutton">ENVOYER</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+
+</html>
