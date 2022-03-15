@@ -20,10 +20,12 @@
                         <div class="form-row my-2 ">
                             <div class="col-lg-12 ">
                                 <input type="text" class="effect-1 "  name="prenom"  placeholder="Prenom">
-                                <span class="Focus-border"></span>
-                                <%   if (alert.prenom)  { %>
-                                    <div class="validation"></div>
-                                    <% } %>      
+                                <span class="Focus-border"></span>  
+                                <% if (alert.prenom) { %>
+                                    <div class="validation">
+                                        <%=alert.prenom.msg%>
+                                    </div>
+                                    <% } %>
                             </div>
                             <div class="col-lg-12 pt-4">
                                     <input type="text" class="effect-1 " name="nom"  placeholder="Nom">

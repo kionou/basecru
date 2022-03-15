@@ -40,15 +40,14 @@ exports.valider= [
    
 ]
 
-exports.userVlidation = (req, res, next) => {
+exports.userVlidation = (req, res) => {
         const result = validationResult(req)
     if (!result.isEmpty() ) {
         const error = result.mapped()
         console.log('rrfrrkrk',error ); 
-        res.render('index',{alert:error})
+        res.render('inscription',{alert:error})
     }
     
-      next() 
 };
 
 
