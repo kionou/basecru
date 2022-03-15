@@ -45,7 +45,7 @@ exports.userVlidation = (req, res, next) => {
     if (!result.isEmpty() ) {
         const error = result.mapped()
         console.log('rrfrrkrk',error ); 
-        res.render('index',{alert:error})
+        res.render('inscription',{alert:error})
     }
     
       next() 
