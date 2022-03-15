@@ -3,6 +3,23 @@ let router= express.Router();
 const db = require('../database/database');
 const crud = require('../controllers/inscriptionControllers');
 const { valider,userVlidation } = require('../mill/validator');
+const multer = require('multer');
+
+
+
+
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './public/imageMulter')
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + file.originalname)
+    }
+  })
+  
+  const upload = multer({ storage: storage })
+
 
 
 
@@ -16,7 +33,7 @@ router.route('/inscription')
     .get((req,res)=>{
         res.render('inscription',{alert:{} })
     })
-    .post( valider,userVlidation,crud.insertionPost)
+    .post( valider,userVlidation, crud.insertionPost)
 
 router.get('/connection',crud.connexionGet)
 router.post('/connection',crud.connexionPost)
@@ -60,18 +77,21 @@ router.get('/edit',(req,res)=>{
     })
 })
 
+router.get('/multer',(req,res)=>{
+        res.render('multer')
+    })
+
+    router.post('/multer',upload.single('uploaded_file'),(req,res)=>{
+        console.log(req.file);
+        let sql =`INSERT INTO image (photo) VALUES('${req.file.filename}')`;
+        db.query(sql,(err,result)=>{
+            if (err) {
+                console.log('errrrrr',err);
+            } else {
+                console.log('resultttt',result);
+            }
+        })
+    })
+
 module.exports = router;
 
-
-
-
-
-//  let error = validationResult(req);
-//     if (error) {
-//         console.log("ededede",error.mapped())
-//         res.render('../views/index',{
-//             alert:error.mapped(),
-//         })
-//     }else{
-
-// }

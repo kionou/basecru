@@ -17,12 +17,17 @@ const crud = class{
     }
 
     static insertionPost = (req=request,res=response) =>{
+        console.log('req bobyrtytrff',req.body);
         data.insert(req.body)   
+       
         res.redirect('/connection')
         
     }
 
     static connexionGet = (req=request,res=response) =>{
+        if(req.session.user){
+            res.redirect('/resultat')
+        }
         res.render('connection')
         
     }
