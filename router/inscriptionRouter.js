@@ -3,7 +3,6 @@ let router= express.Router();
 const db = require('../database/database');
 const crud = require('../controllers/inscriptionControllers');
 const { valider,userVlidation } = require('../mill/validator');
-const { route } = require('express/lib/application');
 
 
 
@@ -15,7 +14,7 @@ router.get('/',(req,res)=>{
 })
 router.route('/inscription')
     .get((req,res)=>{
-        res.render('inscription',{ })
+        res.render('inscription',{alert:{} })
     })
     .post( valider,userVlidation,crud.insertionPost)
 

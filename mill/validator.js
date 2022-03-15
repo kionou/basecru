@@ -40,7 +40,7 @@ exports.valider= [
    
 ]
 
-exports.userVlidation = (req, res, next) => {
+exports.userVlidation = (req, res) => {
         const result = validationResult(req)
     if (!result.isEmpty() ) {
         const error = result.mapped()
@@ -48,7 +48,6 @@ exports.userVlidation = (req, res, next) => {
         res.render('inscription',{alert:error})
     }
     
-      next() 
 };
 
 
