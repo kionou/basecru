@@ -20,7 +20,7 @@ db.connect((err)=>{
             secret: 'keyboard cat',
             resave: false,
             saveUninitialized: true,
-            cookie: { maxAge: 60000 }
+            cookie: { maxAge: 60000000000 }
         }))
         app.use(accueil);
 

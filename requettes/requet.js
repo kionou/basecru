@@ -3,19 +3,32 @@ const db = require("../database/database");
 
 const data = class{
     static insert = (into) =>{
-        let {nom,prenom,email,numero,ville} = into 
-        let sql = "INSERT INTO `clients`( `nom`, `prenom`, `email`, `numero`, `ville`,`photo`) VALUES (?,?,?,?,?);"
-       
-        db.query(sql,[nom, prenom, email,numero,ville],(erreur,result)=>{
-            if (erreur) {
-                console.log(erreur,'rrrrrrr');
-                return erreur
+
+        return new Promise ((resolve,reject) =>{
+            let {nom,prenom,email,numero,ville} = into 
+        let sql = "INSERT INTO `clients`( `nom`, `prenom`, `email`, `numero`, `ville`) VALUES (?,?,?,?,?);"
+
+        let requete = "select * from clients where  email = ?"
+        db.query(requete,[email],(err,result)=>{
+            if (result=='') {
+                console.log('inscrition gratuit'); 
+                db.query(sql,[nom, prenom, email,numero,ville],(erreur,result)=>{
+                    if (erreur) {
+                        
+                        reject(erreur) 
+                    } else {
+                        
+                        resolve(result) 
+                    }
+                })   
             } else {
-                console.log(result);
-                return result
-           
+                reject({message:'deja inscrit ,essayé avec une autre adresse mail ! '})
             }
-        })   
+        })
+        })
+        
+        
+        
     }
 
     static selt = () =>{
@@ -35,13 +48,24 @@ const data = class{
     static supp = (req) =>{
         db.query(`DELETE  FROM clients WHERE id = ?`, [req.query.id],(error,resl)=>{
             if (error) {
-                console.log('eeeeeee',error);
                 return error
             } else {
-                console.log('eeeeerrrrrr',resl);
                 return resl
             
             }
+        })
+    }
+    static postconn = (req) =>{
+        let{nom,email}=req;
+        return new Promise ((resolve,reject)=>{
+            let sql = "select * from clients where nom = ? and email = ?"
+            db.query(sql,[nom,email],(err,resultat) =>{
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve( resultat)
+                }
+            })
         })
     }
 }

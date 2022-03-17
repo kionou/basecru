@@ -1,6 +1,7 @@
 const { request,response } = require("express");
-const db = require("../database/database");
+const { validationResult } = require("express-validator");
 const data = require("../requettes/requet");
+
 
 
 
@@ -8,25 +9,39 @@ const data = require("../requettes/requet");
 
 const crud = class{
     static insertionGet = (req=request,res=response) =>{
-        res.render(`../views/inscription
-    
-        // ,{
-        //     alert:{}
-        // }
-        `)
+        res.render('../views/inscription')
     }
 
     static insertionPost = (req=request,res=response) =>{
-        console.log('req bobyrtytrff',req.body);
-        data.insert(req.body)   
        
-        res.redirect('/connection')
+        const result = validationResult(req)
+
+        if (!result.isEmpty() ) {
+            const error = result.mapped()
+            console.log('rrfrrkrk',error ); 
+            res.render('inscription',{alert:error})
+
+        } else {
+            data.insert(req.body).then(response=>{
+                // console.log(response );
+                res.redirect('/connection')
+            }).catch(error=>{
+                res.render('inscription',{alert:error})
+            })
+        }
+       
+       
+       
+       
+        
         
     }
 
     static connexionGet = (req=request,res=response) =>{
+       
         if(req.session.user){
-            res.redirect('/resultat')
+            console.log('connexion post log log',req.session.user);
+            return  res.redirect('/resultat')
         }
         res.render('connection')
         
@@ -35,31 +50,44 @@ const crud = class{
 
 
     static connexionPost = (req=request,res=response) =>{
-        let{nom,email}=req.body;
-       db.query("select * from clients where nom = ? and email = ?",[nom,email],(err,resultat) =>{
-           if (resultat) {
-             let data = {
-                    nom: req.body.nom,
-                    email: req.body.email
-             }
-                    req.session.user = data;
-                    console.log('ma session est :',req.session)
-                    res.redirect("/resultat")
-           }else{
-               console.log(err);
-           }
-       })
+        
+        req.session.user = ''
+        //console.log("req.body",req.body);
+        data.postconn(req.body)
+            .then((succes)=>{
+                console.log("success ",succes);
+                let dataSuccess = {
+                    nom: succes[0].nom,
+                    email: succes[0].email
+                }
+                req.session.user = dataSuccess;
+                console.log('ma session est :',req.session.user)
+
+                res.redirect("/resultat")
+
+            }).catch(error=>{
+                console.log('eerrrffrtgg',error);
+                res.redirect('/erreur404')
+                return error
+            })
+        
+        
+            
+           
     }
 
     static selection = (req=request,res=response) =>{
-        
-        data.selt(req).then(suc=>{
+        if(req.session.user){
+            data.selt(req).then(suc=>{
                 res.render('resultat',{suc})  
-              }).catch(err=>{
-                  res.redirect('/error404')
-              })
-        console.log('ggdgg',req.session.user);
+            }).catch(err=>{
+                res.redirect('/error404')
+            })
+            console.log('ggdgga',req.session.user);
+        } else {
+          return  res.redirect('/connection')
 
+        }
       
        
 

@@ -2,7 +2,7 @@ let express = require('express');
 let router= express.Router();
 const db = require('../database/database');
 const crud = require('../controllers/inscriptionControllers');
-const { valider,userVlidation } = require('../mill/validator');
+const { valider } = require('../mill/validator');
 const multer = require('multer');
 
 
@@ -33,7 +33,7 @@ router.route('/inscription')
     .get((req,res)=>{
         res.render('inscription',{alert:{} })
     })
-    .post( valider,userVlidation, crud.insertionPost)
+    .post( valider,crud.insertionPost)
 
 router.get('/connection',crud.connexionGet)
 router.post('/connection',crud.connexionPost)
@@ -77,16 +77,20 @@ router.get('/edit',(req,res)=>{
     })
 })
 
+
+
+
+
+
 router.get('/multer',(req,res)=>{
         res.render('multer')
     })
 
     router.post('/multer',upload.single('uploaded_file'),(req,res)=>{
-        console.log(req.file);
         let sql =`INSERT INTO image (photo) VALUES('${req.file.filename}')`;
         db.query(sql,(err,result)=>{
             if (err) {
-                console.log('errrrrr',err);
+                console.log('errrrrr' +'bonjour',err);
             } else {
                 console.log('resultttt',result);
             }
