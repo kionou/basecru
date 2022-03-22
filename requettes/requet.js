@@ -5,7 +5,7 @@ const data = class{
     static insert = (into) =>{
 
         return new Promise ((resolve,reject) =>{
-            let {nom,prenom,email,numero,ville} = into 
+        let {nom,prenom,email,numero,ville} = into 
         let sql = "INSERT INTO `clients`( `nom`, `prenom`, `email`, `numero`, `ville`) VALUES (?,?,?,?,?);"
 
         let requete = "select * from clients where  email = ?"
@@ -46,7 +46,8 @@ const data = class{
     }
 
     static supp = (req) =>{
-        db.query(`DELETE  FROM clients WHERE id = ?`, [req.query.id],(error,resl)=>{
+        console.log('folkjhgf',req.params.id);
+        db.query(`DELETE  FROM clients WHERE id = ?`, [req.params.id],(error,resl)=>{
             if (error) {
                 return error
             } else {

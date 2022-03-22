@@ -1,5 +1,6 @@
 const { request,response } = require("express");
 const { validationResult } = require("express-validator");
+const db = require("../database/database");
 const data = require("../requettes/requet");
 
 
@@ -8,8 +9,12 @@ const data = require("../requettes/requet");
 
 
 const crud = class{
+    static accueil =  (req=request,res=response) =>{
+        res.render('index')
+
+    }
     static insertionGet = (req=request,res=response) =>{
-        res.render('../views/inscription')
+      res.render('../views/inscription')
     }
 
     static insertionPost = (req=request,res=response) =>{
@@ -26,15 +31,10 @@ const crud = class{
                 // console.log(response );
                 res.redirect('/connection')
             }).catch(error=>{
+                console.log(error,"eeeett");
                 res.render('inscription',{alert:error})
             })
-        }
-       
-       
-       
-       
-        
-        
+        }   
     }
 
     static connexionGet = (req=request,res=response) =>{
@@ -47,12 +47,10 @@ const crud = class{
         
     }
 
-
-
     static connexionPost = (req=request,res=response) =>{
         
         req.session.user = ''
-        //console.log("req.body",req.body);
+        console.log("req.body",req.body);
         data.postconn(req.body)
             .then((succes)=>{
                 console.log("success ",succes);
@@ -80,19 +78,49 @@ const crud = class{
         if(req.session.user){
             data.selt(req).then(suc=>{
                 res.render('resultat',{suc})  
-            }).catch(err=>{
+            }).catch(err =>{
                 res.redirect('/error404')
             })
-            console.log('ggdgga',req.session.user);
+            // console.log('ggdgga',req.session.user);
         } else {
           return  res.redirect('/connection')
 
         }
-      
-       
+    }
+
+    static editGet =  (req=request,res=response) =>{
+    db.query(`SELECT * FROM clients WHERE id = ?`,[req.params.id],(error,result)=>{
+        if (error) {
+            console.log('eeeeeee',error);
+        } else {
+            res.render('edit',{data:result[0]});
+        }
+    })
 
     }
 
+    
+    static editPost =  (req=request,res=response) =>{
+         let {nom,prenom,email,numero,ville} = req.body 
+        let sql = "UPDATE clients SET nom = ?, prenom = ?, email = ?, numero = ?, ville = ?  WHERE id = ?"
+    db.query(sql,[nom, prenom, email,numero,ville,req.params.id],(error,result)=>{
+        if (error) {
+            console.log('eeeeeee',error);
+        } else {
+             res.redirect('/resultat')
+                //  db.query(`SELECT * FROM clients WHERE id = ?`,[req.params.id],(error,result)=>{
+                //     if (error) {
+                //         console.log('eeeeeee',error);
+                //     } else {
+                //         res.render('edit',{data:result[0]});
+                //         console.log("eeerfftt",result[0]);
+                //     }
+                // })
+           
+        }
+    })
+
+    }
     static supprimer =  (req=request,res=response) =>{
      data.supp(req)
       res.redirect('/resultat')

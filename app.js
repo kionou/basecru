@@ -30,30 +30,31 @@ db.connect((err)=>{
 
     }
 })
- let transporter = nodemailer.createTransport({
-         service:'gmail',
-        auth: {
-            user:'kionoumohamed@gmail.com',
-            pass:'Laloi2015'
-        },
- });
 
- let mailOptio = {
-     from:'kionoumohamed@gmail.com',
-     to:'kionoumamadou.00@gmail.com',
-     subject:'demo modemailer nan',
-     text:'bonjour Mr......,veillez cliquer sur ce lien pour finaliser votre inscription.',
-     html:'<p>Hello world,bonjour Mr......,veillez cliquer sur ce lien pour finaliser votre inscription. </p>'
+//  let transporter = nodemailer.createTransport({
+//          service:'gmail',
+//         auth: {
+//             user:'kionoumohamed@gmail.com',
+//             pass:'Laloi2015'
+//         },
+//  });
+
+//  let mailOptio = {
+//      from:'kionoumohamed@gmail.com',
+//      to:'kionoumamadou.00@gmail.com',
+//      subject:'demo modemailer nan',
+//      text:'bonjour Mr......,veillez cliquer sur ce lien pour finaliser votre inscription.',
+//      html:'<p>Hello world,bonjour Mr......,veillez cliquer sur ce lien pour finaliser votre inscription. </p>'
      
- }
+//  }
 
- transporter.sendMail(mailOption, (error,info)=>{
-     if (error) {
-         console.log('ererrre',error);
-     } else {
-         console.log('succcesss',info.response);
-     }
- })
+//  transporter.sendMail(mailOption, (error,info)=>{
+//      if (error) {
+//          console.log('ererrre',error);
+//      } else {
+//          console.log('succcesss',info.response);
+//      }
+//  })
 
 
 
