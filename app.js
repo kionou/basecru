@@ -1,6 +1,6 @@
 let express = require('express');
 const session = require('express-session');
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 let app = express();
 let db = require('./database/database');
 let accueil = require("./router/inscriptionRouter");

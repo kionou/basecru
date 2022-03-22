@@ -8,6 +8,8 @@ const data = require("../requettes/requet");
 
 
 
+
+
 const crud = class{
     static accueil =  (req=request,res=response) =>{
         res.render('index')
@@ -53,14 +55,16 @@ const crud = class{
         console.log("req.body",req.body);
         data.postconn(req.body)
             .then((succes)=>{
-                console.log("success ",succes);
+               
                 let dataSuccess = {
                     nom: succes[0].nom,
                     email: succes[0].email
                 }
                 req.session.user = dataSuccess;
-                console.log('ma session est :',req.session.user)
-
+                // console.log('ma session est :',req.session.user)
+                let token = jwt.sign({email:req.body.email}, "ZGVtbyBkZSBKc29uV2ViVG9rZW4=");
+                console.log('tokkkeeee',token);
+                
                 res.redirect("/resultat")
 
             }).catch(error=>{
@@ -76,7 +80,7 @@ const crud = class{
 
     static selection = (req=request,res=response) =>{
         if(req.session.user){
-            data.selt(req).then(suc=>{
+             data.selt(req).then(suc=>{
                 res.render('resultat',{suc})  
             }).catch(err =>{
                 res.redirect('/error404')

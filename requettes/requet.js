@@ -11,7 +11,7 @@ const data = class{
         let requete = "select * from clients where  email = ?"
         db.query(requete,[email],(err,result)=>{
             if (result=='') {
-                console.log('inscrition gratuit'); 
+              
                 db.query(sql,[nom, prenom, email,numero,ville],(erreur,result)=>{
                     if (erreur) {
                         

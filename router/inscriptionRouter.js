@@ -4,6 +4,10 @@ const db = require('../database/database');
 const crud = require('../controllers/inscriptionControllers');
 const { valider } = require('../mill/validator');
 const multer = require('multer');
+const { authentification } = require('../mill/token');
+
+
+
 
 
 
@@ -56,6 +60,8 @@ router.get('/multer',(req,res)=>{
             }
         })
     })
+
+
 
 module.exports = router;
 
