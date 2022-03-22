@@ -1,10 +1,9 @@
 const { request,response } = require("express");
 const { validationResult } = require("express-validator");
 const db = require("../database/database");
-const data = require("../requettes/requet");
-
-
-
+const { mailer } = require("../middleware/nodemailer");
+const data = require("../middleware/requet");
+const authentification = require("../middleware/token");
 
 
 
@@ -20,22 +19,28 @@ const crud = class{
     }
 
     static insertionPost = (req=request,res=response) =>{
-       
+      
+      
         const result = validationResult(req)
-
         if (!result.isEmpty() ) {
             const error = result.mapped()
             console.log('rrfrrkrk',error ); 
             res.render('inscription',{alert:error})
 
         } else {
-            data.insert(req.body).then(response=>{
-                // console.log(response );
-                res.redirect('/connection')
-            }).catch(error=>{
-                console.log(error,"eeeett");
-                res.render('inscription',{alert:error})
-            })
+       
+        let  token = authentification.CreerToken(req.body);
+        
+             mailer(req.body.email,token);
+
+            // data.insert(req.body).then(response=>{
+            //     // console.log(response );
+            //     res.redirect('/connection')
+            // }).catch(error=>{
+            //     console.log(error,"eeeett");
+            //     res.render('inscription',{alert:error})
+            // })
+            res.redirect('/connection')
         }   
     }
 
@@ -61,9 +66,7 @@ const crud = class{
                     email: succes[0].email
                 }
                 req.session.user = dataSuccess;
-                // console.log('ma session est :',req.session.user)
-                let token = jwt.sign({email:req.body.email}, "ZGVtbyBkZSBKc29uV2ViVG9rZW4=");
-                console.log('tokkkeeee',token);
+                 console.log('ma session est :',req.session.user)
                 
                 res.redirect("/resultat")
 
@@ -106,6 +109,7 @@ const crud = class{
     
     static editPost =  (req=request,res=response) =>{
          let {nom,prenom,email,numero,ville} = req.body 
+
         let sql = "UPDATE clients SET nom = ?, prenom = ?, email = ?, numero = ?, ville = ?  WHERE id = ?"
     db.query(sql,[nom, prenom, email,numero,ville,req.params.id],(error,result)=>{
         if (error) {
@@ -130,6 +134,12 @@ const crud = class{
       res.redirect('/resultat')
  
     }
+
+    static connectionToken = (req=request,res=response) =>{
+       console.log("eeeeeehtgeee",req.params.id);
+      return   res.render('connection')
+    
+       }
 
 }
 
