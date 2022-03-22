@@ -2,11 +2,8 @@ let express = require('express');
 let router= express.Router();
 const db = require('../database/database');
 const crud = require('../controllers/inscriptionControllers');
-const { valider } = require('../mill/validator');
+const { valider } = require('../middleware/validator');
 const multer = require('multer');
-const { authentification } = require('../mill/token');
-
-
 
 
 
@@ -34,6 +31,7 @@ router.route('/inscription')
       })
       .post( valider,crud.insertionPost)
 router.get('/connection',crud.connexionGet)
+router.get('/connection/:id',crud.connectionToken)
 router.post('/connection',crud.connexionPost)
 router.get('/resultat',crud.selection)
 router.get('/edit/:id',crud.editGet)
